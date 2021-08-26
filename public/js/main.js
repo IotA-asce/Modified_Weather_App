@@ -26,7 +26,7 @@ const getInfo = async(event) =>{
             temp_status.innerText = arrData[0].weather[0].main;
         }
         catch(error){
-            city_name.innerText = 'Enter a valid Name';
+            city_name.innerText = '!Invalid Name';
         }
 
     }
