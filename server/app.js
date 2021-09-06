@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const app = express();
 dotenv.config({path : './config.env'})
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 
 require("./db/conn");
@@ -44,6 +44,10 @@ app.get("/signup", (req, res) => {
 app.get("/*", (req, res) => {
     res.send("error 404");
 })
+
+if(process.env.NODE_ENV == "production"){
+    app.use(express.static("client/build"))
+}
 
 app.listen(port, () => {
     console.log(`listening to port: ${port}`);
