@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './style/register.css'
 import { NavLink, useHistory } from 'react-router-dom'
+import { UserContext } from '../App'
 
 const Login = () => {
+
+    const { state, dispatch } = useContext(UserContext);
 
     const history = useHistory();
 
@@ -13,12 +16,15 @@ const Login = () => {
     const loginuser = async (e) => {
         e.preventDefault();
 
-        const res = await fetch('/login', {
-            method:"POST",
-            headers:{
-                "Content-Type" : "application/json"
+        let res;
+
+
+        res = await fetch('/login', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
             },
-            body:JSON.stringify({
+            body: JSON.stringify({
                 email,
                 password
             })
@@ -26,12 +32,13 @@ const Login = () => {
 
         const data = res.json();
 
-        if(res.status === 400 || !data){
+        if (res.status === 400 || !data) {
             window.alert("Invalid details")
         }
-        else{
+        else {
+            dispatch({ type: "USER", payload: true })
             window.alert("login success");
-            history.push("/")
+            history.push("/about")
         }
     }
 
@@ -53,9 +60,9 @@ const Login = () => {
                                 placeholder="email"
                             />
                         </div>
-                        <h3>or</h3>
+                        {/* <h3>or</h3> */}
 
-                        <div className="form-group form_ext">
+                        {/* <div className="form-group form_ext">
                             <input
                                 size="30"
                                 type="text"
@@ -66,7 +73,7 @@ const Login = () => {
                                 onChange={(e) => setUsername(e.target.value)}
                                 placeholder="username"
                             />
-                        </div>
+                        </div> */}
 
                         <div className="form-group">
                             <input

@@ -110,4 +110,21 @@ router.get("/about",  authenticate,(req, res, next) => {
     res.send(req.rootUser );
 })
 
+router.get('/contact', authenticate, (req, res, next) => {
+    res.send(req.rootUser);
+})
+
+router.get('/weather', authenticate, (req, res, next) => {
+    res.send(req.rootUser);
+})
+
+router.get('/', authenticate, (req, res, next) => {
+    res.send(req.rootUser);
+})
+
+router.get('/logout', authenticate, (req, res, next) => {
+    res.clearCookie('jwtoken', { path: '/' });
+    res.status(200).send('user logout');
+})
+
 module.exports = router;

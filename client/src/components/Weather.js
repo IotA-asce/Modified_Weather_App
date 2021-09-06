@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './style/weather.css'
 
 let fetchWeatherInfo = async (cityName) => {
@@ -15,12 +15,11 @@ let fetchWeatherInfo = async (cityName) => {
     }
 }
 
+
+
 const Weather = () => {
 
-
     const [cityName, setCityName] = useState('');
-    const [isValid, setIsValid] = useState(false);
-
     const [url, setUrl] = useState('https://source.unsplash.com/1600x900/?nature,weather');
     const [wthrType, setWthrType] = useState('');
     const [temp, setTemp] = useState(0);
@@ -29,6 +28,55 @@ const Weather = () => {
     const [humid, setHumid] = useState(0)
     const [visibility, setVisibility] = useState(0)
     const [wind, setWind] = useState(0)
+
+    const callContactPage = async () => {
+
+        try {
+
+            const res = await fetch('/weather', {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            })
+
+            const data1 = await res.json();
+            console.log(data1);
+
+            if (data1) {
+                setCityName(data1.location);
+                let data;
+                data = await fetchWeatherInfo(data1.location);
+                console.log("data", data[0].main.temp, data[0].weather[0].main);
+                setUrl(`https://source.unsplash.com/1600x900/?${data[0].weather[0].main},weather`)
+                // setCityName('');
+                setWthrType(data[0].weather[0].main);
+                setTemp(data[0].main.temp);
+                setMinTemp(data[0].main.temp_min);
+                setMaxTemp(data[0].main.temp_max);
+                setHumid(data[0].main.humidity);
+                setVisibility(data[0].visibility);
+                setWind(data[0].wind.speed);
+            }
+
+            if (!res.status === 200) {
+                throw new Error(res.error);
+
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        callContactPage();
+    }, [])
+
+
+
+    const [isValid, setIsValid] = useState(false);
+
 
 
 
@@ -80,9 +128,9 @@ const Weather = () => {
                         <div className="temp">
                             <h1 className="tempI">{temp}<sup>°</sup><span className="tempIc">C</span> </h1>
                         </div>
-                            <div className="type">
-                                <h3> {wthrType}</h3>
-                            </div>
+                        <div className="type">
+                            <h3> {wthrType}</h3>
+                        </div>
                         <div className="max_min">
                             <h3>Max : {maxTemp}</h3>
                             <h3>Min : {minTemp}</h3>
