@@ -1,0 +1,51 @@
+.large_cont{
+    width: 100vw;
+    height: 90vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+.card_el{
+    width: 20vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    margin: 1.5em;
+}
+
+/* textarea{
+    padding: 1em;
+} */
+
+.btn-el{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainBtn-el{
+    border: none;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 1em 2em;
+    font-weight: bold;
+    color: whitesmoke;
+    transition: 0.3s linear;
+    background-color: #6600ff;
+}
+
+.mainBtn-el:active{
+    transform: translateY(-0.3em);
+    transition: 0.3s linear;
+    font-weight: bold;
+    color: whitesmoke;
+    background-color: #9900ff;
+}

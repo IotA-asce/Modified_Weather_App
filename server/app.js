@@ -16,18 +16,18 @@ app.use(require('./router/auth'));
 
 // *** 
 // middleware for internal process like login
-const middleware = (req, res, next) => {
-    console.log(`hello middleware`);
-    next();
-}
+// const middleware = (req, res, next) => {
+//     console.log(`hello middleware`);
+//     next();
+// }
 
-app.get('/', (req, res) => {
-    res.send("hello");
-})
+// app.get('/', (req, res) => {
+//     res.send("hello");
+// })
 
-app.get("/about", middleware,  (req, res) => {
-    res.send("hello about");
-})
+// app.get("/about", middleware,  (req, res) => {
+//     res.send("hello about");
+// })
 
 app.get("/contact", (req, res) => {
     res.send("hello contact");

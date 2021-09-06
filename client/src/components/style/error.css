@@ -1,0 +1,60 @@
+
+
+
+
+
+.notfound{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#err{
+    font-size: 7em;
+}
+
+#spanerr{
+    font-size: 1em;
+}
+
+#goback{
+    transition: 0.2s ease-in;
+    position: relative;
+    margin-top: 2em;
+    padding: 1em 2em;
+    background-color: #fff0;
+    border: none;
+    font-size: 2em;
+}
+
+#goback::after{
+    transition: 0.2s ease-in;
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 0.2em;
+    background-color: #6600ff;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#goback:active{
+    transition: 0.2s ease-in;
+    transform: translateY(-0.2em);
+}
+
+#goback:active::after{
+    transition: 0.2s ease-in;
+    content: '';
+    position: absolute;
+    height: 0.2em;
+    background-color: #6600ff;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    transform: translateX(0);
+}
