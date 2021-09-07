@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    {{>headerLinks}}
+    {{!-- <link rel="stylesheet" href="/public/css/styleWeather.css"> --}}
+    <style>
+        :root{
+            --color-or:#ff7f50;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            width: 100vw;
+            overflow-x: hidden;
+        }
+
+        .main_content{
+            width: 100vw;
+            height: 95vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .temp_form{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding-bottom: 3em;
+        }
+
+        #cityName{
+            background-color: white;
+            border: 3px solid var(--color-or);
+            border-radius: 5px;
+            width: 20em;
+            padding: 1em;
+            margin: 2em;
+            font-size: 25px;
+        }
+
+        #submission{
+            background-color: white;
+            border: 3px solid var(--color-or);
+            border-radius: 5px;
+            padding: 1em 2em;
+            font-size: 25px;
+        }
+
+        #submission:hover{
+            background-color: var(--color-or);
+            color: white;
+        }
+
+        .tempInfo{
+            background-color: var(--color-or);
+            width: 16em;
+            height: 15em;
+            font-size: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+        }
+        .top_layer{
+            position: absolute;
+            top: 0em;
+            background-color: black;
+            color: white;   
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding-top: 2em;
+        }
+
+        .main_layer{
+            color: white;
+            position: absolute;
+            bottom: 2em;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            font-weight: bolder;
+        }
+
+    </style>
+
+    <title>Weather app/weather</title>
+</head>
+
+<body>
+    {{>navbar}}
+    <div class="srch-el">
+        <div class="main_content">
+            <form action="/weather" class="temp_form">
+                <input type="text" id="cityName" placeholder="Enter your city name" autocomplete="off">
+                <input type="submit" value="search" id="submission">
+            </form>
+            <div class="tempInfo">
+                <div class="top_layer">
+                    <p id="day">Nanos</p>
+                    <p id="date">29 oct</p>
+                </div>
+                <div class="main_layer">
+                    <p id="city_name"></p>
+                    <div class="middle_layer data_hide">
+                        <p id="temp"></p>
+                        <p id="temp_status"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
