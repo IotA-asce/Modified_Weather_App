@@ -1,0 +1,117 @@
+.App {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: whitesmoke;
+}
+
+.LocationHeader {
+    width: 100vw;
+    height: 5em;
+    /* border-bottom: 1px solid #3d3d3d; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.LHcurrent {
+    padding: 1em;
+    border-radius: 1em;
+    background-color: rgba(22, 21, 21, 0.13);
+}
+
+/* .LHdropdown {} */
+
+.DropDown {
+    position: absolute;
+    padding: 1em;
+    border-radius: 1em;
+    background-color: rgba(22, 21, 21, 0.7);
+    color: #fcfcfc;
+}
+
+.DDitem:not(:first-child) {
+    border-top: 1px solid #7a7979d5;
+    padding-top: 0.3em;
+}
+
+
+.QuickInfo {
+    width: 30em;
+    height: 10em;
+    border-radius: 1em;
+    background-color: rgba(13, 154, 172, 0.295);
+    display: flex;
+}
+
+.QIitem:not(:first-child) {
+    border-left: 1px solid #2422223b;
+}
+
+.QIitem {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.QIItitle {
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+.ocean {
+    height: 5%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* background: #015871; */
+    z-index: 1;
+}
+
+
+
+.wave {
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x;
+    position: absolute;
+    top: -98px;
+    width: 6400px;
+    height: 120px;
+    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+    transform: translate3d(0, 0, 0);
+}
+
+.wave:nth-of-type(2) {
+    top: -75px;
+    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.25s infinite;
+    opacity: 1;
+}
+
+@keyframes wave {
+    0% {
+        margin-left: 0;
+    }
+
+    100% {
+        margin-left: -1600px;
+    }
+}
+
+@keyframes swell {
+
+    0%,
+    100% {
+        transform: translate3d(0, -25px, 0);
+    }
+
+    50% {
+        transform: translate3d(0, 5px, 0);
+    }
+}
